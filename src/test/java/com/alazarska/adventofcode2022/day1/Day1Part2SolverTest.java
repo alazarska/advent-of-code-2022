@@ -41,8 +41,7 @@ class Day1Part2SolverTest {
                 """;
 
         assertThatExceptionOfType(InvalidInputException.class)
-                .isThrownBy(() -> {
-                    day1Solver.solvePartTwo(input);
-                }).withMessageContaining("List of Elves calories is too short. You have to insert at least data for 3 Elves.");
+                .isThrownBy(() -> day1Solver.solvePartTwo(input))
+                .withMessageContaining("List of Elves calories is too short. You have to insert at least data for 3 Elves.");
     }
 }

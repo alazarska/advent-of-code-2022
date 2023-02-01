@@ -101,9 +101,8 @@ class Day1Part1SolverTest {
         String input = "";
 
         assertThatExceptionOfType(InvalidInputException.class)
-                .isThrownBy(() -> {
-                    day1Solver.solvePartOne(input);
-                }).withMessageContaining("Input is empty.");
+                .isThrownBy(() -> day1Solver.solvePartOne(input))
+                .withMessageContaining("Input is empty.");
     }
 
     @Test
@@ -111,8 +110,7 @@ class Day1Part1SolverTest {
         String input = "abc";
 
         assertThatExceptionOfType(InvalidInputException.class)
-                .isThrownBy(() -> {
-                    day1Solver.solvePartOne(input);
-                }).withMessageContaining("One of calories value is not proper number.");
+                .isThrownBy(() -> day1Solver.solvePartOne(input))
+                .withMessageContaining("One of calories value is not proper number.");
     }
 }
