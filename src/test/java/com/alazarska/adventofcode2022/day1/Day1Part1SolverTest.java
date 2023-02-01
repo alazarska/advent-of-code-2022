@@ -1,10 +1,12 @@
 package com.alazarska.adventofcode2022.day1;
 
+import com.alazarska.adventofcode2022.common.InvalidInputException;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 
-class Day1SolverTest {
+class Day1Part1SolverTest {
 
     private final Day1Solver day1Solver = new Day1Solver();
 
@@ -92,5 +94,23 @@ class Day1SolverTest {
         Integer result = day1Solver.solvePartOne(input);
 
         assertThat(result).isEqualTo(4);
+    }
+
+    @Test
+    public void shouldReturnExceptionWhenInputStringIsLessThanOneGroup() {
+        String input = "";
+
+        assertThatExceptionOfType(InvalidInputException.class)
+                .isThrownBy(() -> day1Solver.solvePartOne(input))
+                .withMessageContaining("Input is empty.");
+    }
+
+    @Test
+    public void shouldReturnExceptionWhenInputStringIsNotNumber() {
+        String input = "abc";
+
+        assertThatExceptionOfType(InvalidInputException.class)
+                .isThrownBy(() -> day1Solver.solvePartOne(input))
+                .withMessageContaining("One of calories value is not proper number.");
     }
 }
