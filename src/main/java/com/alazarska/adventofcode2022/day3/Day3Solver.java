@@ -16,8 +16,8 @@ public class Day3Solver {
                 .map(line -> {
                     if (line.length() % 2 == 0) {
                         List<String> strings = new ArrayList<>();
-                        strings.add(line.substring(0, (line.length()) / 2));
-                        strings.add(line.substring((line.length() / 2)));
+                        strings.add(line.substring(0, line.length() / 2));
+                        strings.add(line.substring(line.length() / 2));
                         return strings;
                     } else {
                         throw new InvalidInputException("Line length should be divisible by two.");
