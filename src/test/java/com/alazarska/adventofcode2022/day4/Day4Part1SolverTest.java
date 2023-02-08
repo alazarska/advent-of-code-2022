@@ -46,19 +46,21 @@ public class Day4Part1SolverTest {
 
     @Test
     public void shouldThrowExceptionWhenInputRangeSeparatorIsInvalid() {
-        String input = "2.4,11r2";
+        String input = "2-4,11r2";
 
         assertThatExceptionOfType(InvalidInputException.class)
                 .isThrownBy(() -> day4Solver.solvePartOne(input))
-                .withMessageContaining("Invalid input: 2.4,11r2. Correct range should by separated by dash.");
+                .withMessageContaining(
+                        "Invalid input: 11r2. Correct range should consist of numbers and should be separated by dash. Example correct range: 1-10.");
     }
 
     @Test
     public void shouldThrowExceptionWhenInputRangesContainDataOtherThanNumbers() {
-        String input = "a-$,1-*";
+        String input = "a-$,.-2";
 
         assertThatExceptionOfType(InvalidInputException.class)
                 .isThrownBy(() -> day4Solver.solvePartOne(input))
-                .withMessageContaining("Invalid input: a-$,1-*. Ranges contain data other than numbers.");
+                .withMessageContaining(
+                        "Invalid input: a-$. Correct range should consist of numbers and should be separated by dash. Example correct range: 1-10.");
     }
 }
