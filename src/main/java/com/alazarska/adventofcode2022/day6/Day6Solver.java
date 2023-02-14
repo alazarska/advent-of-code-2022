@@ -9,14 +9,14 @@ import java.util.stream.IntStream;
 public class Day6Solver {
 
     public int solvePartOne(String input) {
-        return findLastIndexOfUniqueMarkerWithGivenLength(validateString(input), 4);
+        return findLastIndexOfUniqueMarkerWithGivenLength(validateInput(input), 4);
     }
 
     public int solvePartTwo(String input) {
-        return findLastIndexOfUniqueMarkerWithGivenLength(validateString(input), 14);
+        return findLastIndexOfUniqueMarkerWithGivenLength(validateInput(input), 14);
     }
 
-    private String validateString(String input) {
+    private String validateInput(String input) {
         if (input.isEmpty()) {
             throw new InvalidInputException("Input is empty.");
         } else {
@@ -45,7 +45,7 @@ public class Day6Solver {
 
     private boolean checkIfCharactersAreUnique(String str) {
         char[] chars = str.toCharArray();
-        Arrays.sort(str.toCharArray());
+        Arrays.sort(chars);
         for (int i = 0; i < chars.length - 1; i++) {
             if (chars[i] == chars[i + 1]) {
                 return false;
