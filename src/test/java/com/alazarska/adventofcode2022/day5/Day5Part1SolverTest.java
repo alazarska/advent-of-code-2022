@@ -4,6 +4,7 @@ import com.alazarska.adventofcode2022.common.InvalidInputException;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -15,10 +16,11 @@ public class Day5Part1SolverTest {
 
     @Test
     public void shouldReturnProperResultForExampleInputFromTaskDescription() {
-        List<CratesStack> stacks = new ArrayList<>();
-        stacks.add(new CratesStack('Z', 'N'));
-        stacks.add(new CratesStack('M', 'C', 'D'));
-        stacks.add(new CratesStack('P'));
+        List<CratesStack> stacks = Arrays.asList(
+                new CratesStack('Z', 'N'),
+                new CratesStack('M', 'C', 'D'),
+                new CratesStack('P')
+        );
 
         String procedures = """
                 move 1 from 2 to 1

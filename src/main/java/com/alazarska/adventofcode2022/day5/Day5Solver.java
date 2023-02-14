@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Day5Solver {
 
@@ -13,22 +14,23 @@ public class Day5Solver {
             Pattern.compile("move (?<elementsToMove>\\d+) from (?<actualStack>\\d+) to (?<targetStack>\\d+)");
 
     public String solvePartOne(List<CratesStack> stacks, String procedures) {
-        procedures.lines().forEach(procedureLine -> {
-            Procedure procedure = getProcedure(procedureLine);
-            rearrangeCrates(procedure, stacks, false);
-        });
+        parseProcedures(procedures)
+                .forEach(procedure -> rearrangeCrates(procedure, stacks, false));
         return getTopCratesCharacters(stacks);
     }
 
     public String solvePartTwo(List<CratesStack> stacks, String procedures) {
-        procedures.lines().forEach(procedureLine -> {
-            Procedure procedure = getProcedure(procedureLine);
-            rearrangeCrates(procedure, stacks, true);
-        });
+        parseProcedures(procedures)
+                .forEach(procedure -> rearrangeCrates(procedure, stacks, true));
         return getTopCratesCharacters(stacks);
     }
 
-    private Procedure getProcedure(String procedure) {
+    private Stream<Procedure> parseProcedures(String procedures) {
+        return procedures.lines()
+                .map(this::parseProcedure);
+    }
+
+    private Procedure parseProcedure(String procedure) {
         if (procedure.isEmpty()) {
             throw new InvalidInputException("Procedure is empty. Enter at least one valid procedure.");
         }
